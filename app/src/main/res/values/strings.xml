@@ -27,4 +27,9 @@
     <string name="minimum_misii">Minimum 5 uloh</string>
     <string name="muzi_misia">Hra bez muzov</string>
     <string name="zeny_misia">Hra bez zien</string>
+    <string name="toci">Točí:</string>
+    <string name="toci_tlacitko">Toč sa!</string>
+    <string name="rebricek">Rebríček</string>
+    <string name="mena_hracov">Meno hráča</string>
+    <string name="pocet_shotov">Počet shotov</string>
 </resources>
