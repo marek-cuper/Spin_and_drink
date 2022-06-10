@@ -7,127 +7,378 @@
     tools:context=".MainActivity"
     android:background="@drawable/fun02">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="700dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202"
-        app:srcCompat="@drawable/roult" />
+        app:layout_constraintVertical_bias="0.483">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:text="Točí:"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/hrac_na_rade"
-        app:layout_constraintHorizontal_bias="0.819"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/hrac_na_rade"
-        android:layout_width="184dp"
-        android:layout_height="53dp"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:text="Hrac3"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="Točí: "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
 
-    <TextView
-        android:id="@+id/TextView_Tabulka_Mien"
-        android:layout_width="138dp"
-        android:layout_height="222dp"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:text="Hrac2\nHrac3\nHrac1\nHrac6\nHrac5\nHrac4"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968" />
+            <TextView
+                android:id="@+id/hrac_na_rade"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="Hrac3"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="35dp"
-        android:layout_height="222dp"
-        android:background="@color/white"
-        android:text="5\n3\n2\n2\n1\n1"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toEndOf="@+id/TextView_Tabulka_Mien"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/roult" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="30dp"
-        android:layout_height="222dp"
-        android:background="@color/white"
-        android:text="1.\n2.\n3.\n4.\n5.\n6."
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_Tabulka_Mien"
-        app:layout_constraintHorizontal_bias="0.587"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968" />
+        <Button
+            android:id="@+id/tocSaButton"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/purple_500"
+            android:gravity="center"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:text="Toč sa!"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="436dp"
-        android:background="@color/white"
-        android:text="Rebríček:"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/TextView_Tabulka_Mien"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="260dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/tocSaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:text="Toč sa!"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <TextView
+                    android:id="@+id/textViewRebricek0"
+                    android:layout_width="110dp"
+                    android:layout_height="45dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Rebríček"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewHrac0"
+                    android:layout_width="140dp"
+                    android:layout_height="45dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Meno hráča"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textSkore0"
+                    android:layout_width="110dp"
+                    android:layout_height="45dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Počet shotov"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewRebricek1"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHrac1"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Majko_Pajko"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSkore1"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewRebricek2"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHrac2"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Majko_Pajko"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSkore2"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewRebricek3"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHrac3"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Majko_Pajko"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSkore3"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewRebricek4"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHrac4"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Majko_Pajko"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSkore4"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewRebricek5"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHrac5"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Majko_Pajko"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSkore5"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewRebricek6"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewHrac6"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Majko_Pajko"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSkore6"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

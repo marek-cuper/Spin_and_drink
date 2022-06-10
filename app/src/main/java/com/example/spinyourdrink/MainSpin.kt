@@ -14,19 +14,13 @@ class MainSpin : AppCompatActivity() {
         setContentView(R.layout.activity_main_spin)
 
         val tocSaButton = findViewById<Button>(R.id.tocSaButton)
-        val tabulkaMien = findViewById<TextView>(R.id.TextView_Tabulka_Mien)
+        //val tabulkaMien = findViewById<TextView>(R.id.TextView_Tabulka_Mien)
         val hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
         val listMien = intent.getStringArrayListExtra("listMien")
 
         hracNaRadeText.setText(listMien?.get(cisloHaracNaRade))
 
-        var mena = ""
-        if(listMien != null){
-            for (i in 0..listMien.size-1) {
-                mena = mena + listMien[i] + "\n"
-            }
-        }
-        tabulkaMien.setText(mena)
+
 
         tocSaButton.setOnClickListener() {
             cisloHaracNaRade++
