@@ -2,7 +2,6 @@ package com.example.spinyourdrink
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -41,7 +40,7 @@ class MissionSettings : AppCompatActivity() {
         val switchDrepy = findViewById<Switch>(R.id.switch_drepy)
         val switchPauza = findViewById<Switch>(R.id.switch_pauza)
 
-        var textViewUpozornenie = findViewById<TextView>(R.id.upozornenieMission)
+        val textViewUpozornenie = findViewById<TextView>(R.id.upozornenieMission)
 
 
         if (listPohlavi != null) {
@@ -133,7 +132,7 @@ class MissionSettings : AppCompatActivity() {
     fun minimum() {
         val pocUloh = pocetUloh()
         if(pocUloh < 5){
-            var textViewUpozornenie = findViewById<TextView>(R.id.upozornenieMission)
+            val textViewUpozornenie = findViewById<TextView>(R.id.upozornenieMission)
             textViewUpozornenie.setText(getString(R.string.minimum_misii))
             textViewUpozornenie.visibility = View.VISIBLE
 
