@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 class NamesSettings : AppCompatActivity() {
     var pocetHracov = 0;
     var listMien = ArrayList<String>()
-    var listPohlavi = ArrayList<Boolean>()
+    var listPohlavi = ArrayList<String>()
     var zobrazenieText = ArrayList<EditText>()
     var zobrazenieSwitch = ArrayList<Switch>()
 
@@ -78,30 +78,30 @@ class NamesSettings : AppCompatActivity() {
             listMien.add(textHrac1.text.toString())
             listMien.add(textHrac2.text.toString())
             listMien.add(textHrac3.text.toString())
-            listPohlavi.add(switchHrac1.isChecked)
-            listPohlavi.add(switchHrac2.isChecked)
-            listPohlavi.add(switchHrac3.isChecked)
+            listPohlavi.add(pohlavieString(switchHrac1.isChecked))
+            listPohlavi.add(pohlavieString(switchHrac2.isChecked))
+            listPohlavi.add(pohlavieString(switchHrac3.isChecked))
             if(pocetHracov > 3){
                 listMien.add(textHrac4.text.toString())
-                listPohlavi.add(switchHrac4.isChecked)
+                listPohlavi.add(pohlavieString(switchHrac4.isChecked))
                 if(pocetHracov > 4){
                     listMien.add(textHrac5.text.toString())
-                    listPohlavi.add(switchHrac5.isChecked)
+                    listPohlavi.add(pohlavieString(switchHrac5.isChecked))
                     if(pocetHracov > 5){
                         listMien.add(textHrac6.text.toString())
-                        listPohlavi.add(switchHrac6.isChecked)
+                        listPohlavi.add(pohlavieString(switchHrac6.isChecked))
                     }
                 }
             }
-            for (i in 0..listMien.size-1) {
+            for (i in 0 until listMien.size) {
                 if(listMien[i] == ""){
                     listMien[i] = "hrac" + (i + 1)
                 }
             }
 
             val intent = Intent(this,MissionSettings::class.java).apply {
-                putExtra("zoznamMien", listMien)
-                putExtra("zoznamPohlavi", listPohlavi)
+                putExtra("listMien", listMien)
+                putExtra("listPohlavi", listPohlavi)
             }
             startActivity(intent)
         }
@@ -155,5 +155,13 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun pohlavieString(pohlavie: Boolean): String {
+        if(pohlavie){
+            return "zena"
+        } else{
+            return "muz"
+        }
     }
 }

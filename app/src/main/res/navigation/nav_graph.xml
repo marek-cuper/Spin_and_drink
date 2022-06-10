@@ -2,4 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"/>
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startPage">
+    <activity
+        android:id="@+id/startPage"
+        android:name="com.example.spinyourdrink.StartPage"
+        android:label="StartPage" />
+    <activity
+        android:id="@+id/namesSettings"
+        android:name="com.example.spinyourdrink.NamesSettings"
+        android:label="NamesSettings" />
+</navigation>

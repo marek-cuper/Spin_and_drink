@@ -24,4 +24,7 @@
     <string name="uloha_drepy">Urob 10 drepov</string>
     <string name="uloha_pauza">Daj si oddych</string>
     <string name="title_activity_main_spin">MainSpin</string>
+    <string name="minimum_misii">Minimum 5 uloh</string>
+    <string name="muzi_misia">Hra bez muzov</string>
+    <string name="zeny_misia">Hra bez zien</string>
 </resources>

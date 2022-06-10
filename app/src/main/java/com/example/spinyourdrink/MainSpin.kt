@@ -17,26 +17,26 @@ class MainSpin : AppCompatActivity() {
         var tocSaButton = findViewById<Button>(R.id.tocSaButton)
         var tabulkaMien = findViewById<TextView>(R.id.TextView_Tabulka_Mien)
         var hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
-        val zoznamMien = intent.getStringArrayListExtra("zoznamMien")
+        val listMien = intent.getStringArrayListExtra("listMien")
 
-        hracNaRadeText.setText(zoznamMien?.get(cisloHaracNaRade))
+        hracNaRadeText.setText(listMien?.get(cisloHaracNaRade))
 
         var mena = ""
-        if(zoznamMien != null){
-            for (i in 0..zoznamMien.size-1) {
-                mena = mena + zoznamMien[i] + "\n"
+        if(listMien != null){
+            for (i in 0..listMien.size-1) {
+                mena = mena + listMien[i] + "\n"
             }
         }
         tabulkaMien.setText(mena)
 
         tocSaButton.setOnClickListener() {
             cisloHaracNaRade++
-            if(zoznamMien != null){
-                if(cisloHaracNaRade == zoznamMien.size){
+            if(listMien != null){
+                if(cisloHaracNaRade == listMien.size){
                     cisloHaracNaRade = 0
                 }
             }
-            hracNaRadeText.setText(zoznamMien?.get(cisloHaracNaRade))
+            hracNaRadeText.setText(listMien?.get(cisloHaracNaRade))
         }
 
 
