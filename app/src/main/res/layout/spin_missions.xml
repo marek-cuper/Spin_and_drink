@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/fun02">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202"
+        app:srcCompat="@drawable/roult" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="Točí:"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <TextView
+        android:id="@+id/hrac_na_rade"
+        android:layout_width="184dp"
+        android:layout_height="53dp"
+        android:background="@color/white"
+        android:text="Hrac3"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <TextView
+        android:id="@+id/TextView_Tabulka_Mien"
+        android:layout_width="138dp"
+        android:layout_height="222dp"
+        android:background="@color/white"
+        android:text="Hrac2\nHrac3\nHrac1\nHrac6\nHrac5\nHrac4"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.686"
+        tools:layout_editor_absoluteX="136dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="35dp"
+        android:layout_height="222dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/white"
+        android:text="5\n3\n2\n2\n1\n1"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="325dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="30dp"
+        android:layout_height="222dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/white"
+        android:text="1.\n2.\n3.\n4.\n5.\n6."
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="76dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:background="@color/white"
+        android:text="Rebríček:"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:layout_editor_absoluteX="144dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Toč sa!"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="376dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Spin &amp; drink</string>
+    <string name="start_button">Start</string>
+    <string name="game_name"><![CDATA[Spin & drink]]></string>
+    <string name="title_activity_names_settings">NamesSettings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="pokracovat">Pokračovať</string>
+    <string name="title_activity_mission_settings">MissionSettings</string>
+    <string name="uloha_vypi">Vypi</string>
+    <string name="uloha_vypi2">2x Vypi</string>
+    <string name="uloha_partner">Partner v pití</string>
+    <string name="uloha_muzi">Pijú len muži</string>
+    <string name="uloha_zeny">Pijú len ženy</string>
+    <string name="uloha_vsetci">Pijú všetci</string>
+    <string name="uloha_nalej">Naliate do úst</string>
+    <string name="uloha_stastlivec">Pije šťastlivec</string>
+    <string name="uloha_drepy">Urob 10 drepov</string>
+    <string name="uloha_pauza">Daj si oddych</string>
+    <string name="title_activity_main_spin">MainSpin</string>
+</resources>

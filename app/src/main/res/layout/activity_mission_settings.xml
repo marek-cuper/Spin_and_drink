@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fun02">
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="731dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Switch
+            android:id="@+id/switchVypi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_vypi"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchVypi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_vypi2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchPartner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_partner"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchMuzi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_muzi"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchZeny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_zeny"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchVsetci"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_vsetci"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchNalej"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_nalej"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switchStastlivec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_stastlivec"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switch_drepy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_drepy"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/switch_pauza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:scaleX="1.75"
+            android:scaleY="1.75"
+            android:text="@string/uloha_pauza"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+        <Button
+            android:id="@+id/pokracovatButtonMission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/pokracovat" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
