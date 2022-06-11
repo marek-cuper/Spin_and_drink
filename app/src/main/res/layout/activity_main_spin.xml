@@ -49,11 +49,58 @@
                 android:textSize="40sp" />
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="260dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/roult" />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="260dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.483">
+
+            <TextView
+                android:id="@+id/textViewUloha"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="@string/uloha_spin"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/TextViewVytocenaUloha"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
 
         <Button
             android:id="@+id/tocSaButton"

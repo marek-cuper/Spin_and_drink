@@ -14,10 +14,14 @@ class MainSpin : AppCompatActivity() {
     var listTextViewRebricek = ArrayList<TextView>()
     var listTextViewMena = ArrayList<TextView>()
     var listTextViewSkore = ArrayList<TextView>()
+    var listOrigUloh = ArrayList<Int>()
+    var listOrigPohlavi = ArrayList<String>()
     var listOrigMena = ArrayList<String>()
     var listOrigSkore = ArrayList<Int>()
     var listAktMena = ArrayList<String>()
     var listAktSkore = ArrayList<Int>()
+    var ulohaPartner = ArrayList<Int>()
+    val vytocenaUlohaList = ArrayList<TextView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +41,7 @@ class MainSpin : AppCompatActivity() {
         listTextViewRebricek.add(textViewRebricek5)
         listTextViewRebricek.add(textViewRebricek6)
 
-        val textViewMeno1= findViewById<TextView>(R.id.textViewHrac1)
+        val textViewMeno1 = findViewById<TextView>(R.id.textViewHrac1)
         val textViewMeno2 = findViewById<TextView>(R.id.textViewHrac2)
         val textViewMeno3 = findViewById<TextView>(R.id.textViewHrac3)
         val textViewMeno4 = findViewById<TextView>(R.id.textViewHrac4)
@@ -63,8 +67,8 @@ class MainSpin : AppCompatActivity() {
         listTextViewSkore.add(textViewSkore5)
         listTextViewSkore.add(textViewSkore6)
 
-
-        val listPohlavi = intent.getStringArrayListExtra("listPohlavi")
+        listOrigUloh = intent.getIntegerArrayListExtra("listUloh") as ArrayList<Int>
+        listOrigPohlavi = intent.getStringArrayListExtra("listPohlavi") as ArrayList<String>
         val listMien = intent.getStringArrayListExtra("listMien")
         if (listMien != null) {
             pocetHracov = listMien.size
@@ -73,135 +77,246 @@ class MainSpin : AppCompatActivity() {
 
         val tocSaButton = findViewById<Button>(R.id.tocSaButton)
         val hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
+        val vytocenaUlohaText = findViewById<TextView>(R.id.TextViewVytocenaUloha)
+        vytocenaUlohaList.add(vytocenaUlohaText)
 
         hracNaRadeText.setText(listMien?.get(cisloHracaNaRade))
 
 
 
         tocSaButton.setOnClickListener() {
-            /**
-            var vyg = ArrayList<Int>()
-            if(cisloHracaNaRade == 0){
-                vyg.add(2)
-                navys(vyg, 2)
-            }
-            if(cisloHracaNaRade == 1){
-                vyg.add(0)
-                vyg.add(1)
-                vyg.add(2)
-                navys(vyg, 1)
-            }
-            if(cisloHracaNaRade == 2){
-                vyg.add(0)
-                vyg.add(3)
-                navys(vyg, 2)
-            }
-            if(cisloHracaNaRade == 3){
-                vyg.add(2)
-                navys(vyg, 1)
-            }
-            if(cisloHracaNaRade == 4){
-                vyg.add(3)
-                navys(vyg, 2)
-            }
-            **/
-
+            val cislo = (0 until listOrigUloh.size).random()
+            val genCislo = listOrigUloh[cislo]
+            vykonajUlohu(genCislo)
 
             cisloHracaNaRade++
-            if(listMien != null){
-                if(cisloHracaNaRade == pocetHracov){
+            if (listMien != null) {
+                if (cisloHracaNaRade == pocetHracov) {
                     cisloHracaNaRade = 0
                 }
             }
             hracNaRadeText.setText(listMien?.get(cisloHracaNaRade))
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    fun nastavRebricekZaciatok(vstupListMien: ArrayList<String>) {
-        for (i in 0 until pocetHracov){
-            listTextViewRebricek[i].setText((i + 1).toString() + ".")
-
-            listTextViewMena[i].setText(vstupListMien[i])
-            listOrigMena.add(vstupListMien[i])
-            listAktMena.add(vstupListMien[i])
-
-            listTextViewSkore[i].setText("0")
-            listOrigSkore.add(0)
-            listAktSkore.add(0)
-        }
-    }
-
-    @SuppressLint("ResourceType")
-    fun navys(cislaVListe: ArrayList<Int>, kolko: Int){
-        for (i in 0 until pocetHracov){
-            listTextViewRebricek[i].setBackgroundColor(Color.parseColor(getString(R.color.white)))
-            listTextViewMena[i].setBackgroundColor(Color.parseColor(getString(R.color.white)))
-            listTextViewSkore[i].setBackgroundColor(Color.parseColor(getString(R.color.white)))
-        }
-
-        for (i in 0 until cislaVListe.size){
-            listOrigSkore[cislaVListe[i]] = listOrigSkore[cislaVListe[i]] + kolko
-        }
-
-        aktualizujrebricek()
-
-        for (i in 0 until cislaVListe.size){
-            val pozicia = aktualnaPozicia(cislaVListe[i])
-            listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
-            listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
-            listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
 
         }
     }
 
-    fun aktualnaPozicia(cisloOriginal: Int): Int{
-        val meno = listOrigMena[cisloOriginal]
-        for (i in 0 until pocetHracov){
-            if(meno == listAktMena[i]){
-                return i
+        @SuppressLint("SetTextI18n")
+        fun nastavRebricekZaciatok(vstupListMien: ArrayList<String>) {
+            for (i in 0 until pocetHracov) {
+                listTextViewRebricek[i].setText((i + 1).toString() + ".")
+
+                listTextViewMena[i].setText(vstupListMien[i])
+                listOrigMena.add(vstupListMien[i])
+                listAktMena.add(vstupListMien[i])
+
+                listTextViewSkore[i].setText("0")
+                listOrigSkore.add(0)
+                listAktSkore.add(0)
             }
         }
-        return 0
-    }
 
-    fun aktualizujrebricek(){
-        for (i in 0 until pocetHracov){
-            listAktMena.removeAt(0)
-            listAktSkore.removeAt(0)
+        @SuppressLint("ResourceType")
+        fun navys(cislaVListe: ArrayList<Int>, kolko: Int) {
+
+            for (i in 0 until cislaVListe.size) {
+                listOrigSkore[cislaVListe[i]] = listOrigSkore[cislaVListe[i]] + kolko
+            }
+
+            aktualizujrebricek()
+
+            for (i in 0 until cislaVListe.size) {
+                zafarbi(cislaVListe[i], "zelena")
+
+            }
         }
 
-
-        var pomocnyListMena = ArrayList<String>()
-        var pomocnyListSkore = ArrayList<Int>()
-        for (i in 0 until pocetHracov){
-            pomocnyListMena.add(listOrigMena[i])
-            pomocnyListSkore.add(listOrigSkore[i])
+        fun vybielRebricek(){
+            for (i in 0 until pocetHracov) {
+                zafarbi(i, "biela")
+            }
         }
 
+        @SuppressLint("ResourceType")
+        fun zafarbi(cislo: Int, farba: String) {
+            val pozicia = aktualnaPozicia(cislo)
+            if (farba == "zelena") {
+                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
+                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
+                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
+            }  else if(farba == "tmavozel") {
+                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
+                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
+                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
 
-        for (i in 0 until pocetHracov){
-            var najSkore = 0
-            var najPozicia = 0
+            }  else if(farba == "biela") {
+                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
+                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
+                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
 
-            for (j in 0 until pomocnyListMena.size){
-                if(najSkore < pomocnyListSkore[j]){
-                    najSkore = pomocnyListSkore[j]
-                    najPozicia = j
+            } else {
+                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+            }
+
+        }
+
+        fun aktualnaPozicia(cisloOriginal: Int): Int {
+            val meno = listOrigMena[cisloOriginal]
+            for (i in 0 until pocetHracov) {
+                if (meno == listAktMena[i]) {
+                    return i
+                }
+            }
+            return 0
+        }
+
+        fun aktualizujrebricek() {
+            for (i in 0 until pocetHracov) {
+                listAktMena.removeAt(0)
+                listAktSkore.removeAt(0)
+            }
+
+
+            var pomocnyListMena = ArrayList<String>()
+            var pomocnyListSkore = ArrayList<Int>()
+            for (i in 0 until pocetHracov) {
+                pomocnyListMena.add(listOrigMena[i])
+                pomocnyListSkore.add(listOrigSkore[i])
+            }
+
+
+            for (i in 0 until pocetHracov) {
+                var najSkore = 0
+                var najPozicia = 0
+
+                for (j in 0 until pomocnyListMena.size) {
+                    if (najSkore < pomocnyListSkore[j]) {
+                        najSkore = pomocnyListSkore[j]
+                        najPozicia = j
+                    }
+                }
+
+                listAktMena.add(pomocnyListMena[najPozicia])
+                listAktSkore.add(pomocnyListSkore[najPozicia])
+                pomocnyListMena.removeAt(najPozicia)
+                pomocnyListSkore.removeAt(najPozicia)
+            }
+            for (j in 0 until pocetHracov) {
+                listTextViewMena[j].text = listAktMena[j]
+                listTextViewSkore[j].text = listAktSkore[j].toString()
+            }
+        }
+
+        fun vykonajUlohu(cisloUlohy: Int) {
+            vybielRebricek()
+            var ucastnici = ArrayList<Int>()
+            var kolko = 0
+
+            if (cisloUlohy == 0) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_vypi)
+                ucastnici.add(cisloHracaNaRade)
+                kolko = 1
+
+            } else if (cisloUlohy == 1) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_vypi2)
+                ucastnici.add(cisloHracaNaRade)
+                kolko = 2
+
+            } else if (cisloUlohy == 2) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_partner)
+                if (ulohaPartner.size > 1) {
+                    ulohaPartner.removeAt(0)
+                    ulohaPartner.removeAt(0)
+                }
+                ulohaPartner.add(cisloHracaNaRade)
+                var genPartner = (0 until pocetHracov).random()
+                while (genPartner == cisloHracaNaRade) {
+                    genPartner = (0 until pocetHracov).random()
+                }
+                ulohaPartner.add(genPartner)
+                zafarbi(ulohaPartner[0], "fialova")
+                zafarbi(ulohaPartner[1], "fialova")
+
+
+            } else if (cisloUlohy == 3) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_muzi)
+                for (i in 0 until pocetHracov){
+                    if(listOrigPohlavi[i] == "muz"){
+                        ucastnici.add(i)
+                    }
+                }
+                kolko = 1
+
+            } else if (cisloUlohy == 4) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_zeny)
+                for (i in 0 until pocetHracov){
+                    if(listOrigPohlavi[i] == "zena"){
+                        ucastnici.add(i)
+                    }
+                }
+                kolko = 1
+
+            } else if (cisloUlohy == 5) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_vsetci)
+                for (i in 0 until pocetHracov){
+                    ucastnici.add(i)
+                }
+                kolko = 1
+
+            } else if (cisloUlohy == 6) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_nalej)
+                ucastnici.add(cisloHracaNaRade)
+                kolko = 1
+
+            } else if (cisloUlohy == 7) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_stastlivec)
+                var najmensie = listOrigSkore[0]
+                for (i in 0 until pocetHracov){
+                    if(listOrigSkore[i] < najmensie){
+                        najmensie = listOrigSkore[i]
+                    }
+                }
+                for (i in 0 until pocetHracov){
+                    if(listOrigSkore[i] == najmensie){
+                        ucastnici.add(i)
+                    }
+                }
+                kolko = 1
+
+            } else if (cisloUlohy == 8) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_drepy)
+                zafarbi(cisloHracaNaRade, "tmavozel")
+
+            } else if (cisloUlohy == 9) {
+                vytocenaUlohaList[0].text = getString(R.string.uloha_pauza)
+                zafarbi(cisloHracaNaRade, "tmavozel")
+            }
+
+            if (kolko != 0){
+                if (ulohaPartner.size != 0) {
+                    if (ucastnici.contains(ulohaPartner[0])) {
+                        if (!ucastnici.contains(ulohaPartner[1])) {
+                            ucastnici.add(ulohaPartner[1])
+                            navys(ucastnici, kolko)
+                            zafarbi(ulohaPartner[1], "fialova")
+                        } else {
+                            navys(ucastnici, kolko)
+                        }
+                    } else if (ucastnici.contains(ulohaPartner[1])) {
+                        ucastnici.add(ulohaPartner[0])
+                        navys(ucastnici, kolko)
+                        zafarbi(ulohaPartner[0], "fialova")
+                    } else{
+                        navys(ucastnici, kolko)
+                    }
+                } else{
+                    navys(ucastnici, kolko)
                 }
             }
 
-            listAktMena.add(pomocnyListMena[najPozicia])
-            listAktSkore.add(pomocnyListSkore[najPozicia])
-            pomocnyListMena.removeAt(najPozicia)
-            pomocnyListSkore.removeAt(najPozicia)
-        }
-        for (j in 0 until pocetHracov){
-            listTextViewMena[j].text = listAktMena[j]
-            listTextViewSkore[j].text = listAktSkore[j].toString()
-        }
 
-    }
+        }
 
 
 

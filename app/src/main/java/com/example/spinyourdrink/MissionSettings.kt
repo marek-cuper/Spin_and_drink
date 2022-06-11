@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MissionSettings : AppCompatActivity() {
 
-    var listUlohy = ArrayList<Boolean>()
     var listSwitchov = ArrayList<Switch>()
     var zeny = false
     var muzi = false
@@ -70,15 +69,23 @@ class MissionSettings : AppCompatActivity() {
         listSwitchov.add(switchPauza)
 
         pokracovatButton.setOnClickListener() {
-
+            if(!muzi){
+                listSwitchov.add(3, switchMuzi)
+            }
+            if(!zeny){
+                listSwitchov.add(4, switchZeny)
+            }
+            var listUloh = ArrayList<Int>()
             for (i in 0 until listSwitchov.size){
-                listUlohy.add(listSwitchov[i].isChecked)
+                if(listSwitchov[i].isChecked){
+                    listUloh.add(i)
+                }
             }
 
             intent = Intent(this, MainSpin::class.java).apply {
                 putExtra("listMien", listMien)
                 putExtra("listPohlavi", listPohlavi)
-                putExtra("listUloh", listUlohy)
+                putExtra("listUloh", listUloh)
             }
             startActivity(intent)
 
