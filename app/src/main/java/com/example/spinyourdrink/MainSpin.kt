@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -11,6 +12,7 @@ class MainSpin : AppCompatActivity() {
 
     var pocetHracov = 0
     var cisloHracaNaRade = 0
+    var kolesoAktRotacia = 0
     var listTextViewRebricek = ArrayList<TextView>()
     var listTextViewMena = ArrayList<TextView>()
     var listTextViewSkore = ArrayList<TextView>()
@@ -21,12 +23,15 @@ class MainSpin : AppCompatActivity() {
     var listAktMena = ArrayList<String>()
     var listAktSkore = ArrayList<Int>()
     var ulohaPartner = ArrayList<Int>()
-    val vytocenaUlohaList = ArrayList<TextView>()
+    private var wheeelImage: ImageView? = null
+    private var vytocenaUlohaText: TextView? = null
+    private var hracNaRadeText: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_spin)
 
+        wheeelImage = findViewById<ImageView>(R.id.imageViewKoleso)
 
         val textViewRebricek1 = findViewById<TextView>(R.id.textViewRebricek1)
         val textViewRebricek2 = findViewById<TextView>(R.id.textViewRebricek2)
@@ -76,29 +81,40 @@ class MainSpin : AppCompatActivity() {
         }
 
         val tocSaButton = findViewById<Button>(R.id.tocSaButton)
-        val hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
-        val vytocenaUlohaText = findViewById<TextView>(R.id.TextViewVytocenaUloha)
-        vytocenaUlohaList.add(vytocenaUlohaText)
+        hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
+        vytocenaUlohaText = findViewById<TextView>(R.id.TextViewVytocenaUloha)
 
-        hracNaRadeText.setText(listMien?.get(cisloHracaNaRade))
+        hracNaRadeText?.text = listOrigMena[cisloHracaNaRade]
 
 
 
         tocSaButton.setOnClickListener() {
-            val cislo = (0 until listOrigUloh.size).random()
-            val genCislo = listOrigUloh[cislo]
-            vykonajUlohu(genCislo)
+            tocKolesom()
+        }
+    }
 
-            cisloHracaNaRade++
-            if (listMien != null) {
+        fun tocKolesom(){
+            var cislo = (1..360 ).random()
+            kolesoAktRotacia += cislo
+            kolesoAktRotacia %= 360
+            val nasob = (2..4 ).random()
+            cislo += (360 * nasob)
+            wheeelImage?.animate()?.setDuration((500 * nasob).toLong())?.rotationBy(0F + cislo)?.withEndAction {
+                val cisloVListe = kolesoAktRotacia / (360 / listOrigUloh.size)
+
+                vykonajUlohu(listOrigUloh[cisloVListe])
+
+                cisloHracaNaRade++
                 if (cisloHracaNaRade == pocetHracov) {
                     cisloHracaNaRade = 0
                 }
+
+
+                hracNaRadeText?.text = listOrigMena[cisloHracaNaRade]
             }
-            hracNaRadeText.setText(listMien?.get(cisloHracaNaRade))
+
 
         }
-    }
 
         @SuppressLint("SetTextI18n")
         fun nastavRebricekZaciatok(vstupListMien: ArrayList<String>) {
@@ -214,17 +230,17 @@ class MainSpin : AppCompatActivity() {
             var kolko = 0
 
             if (cisloUlohy == 0) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_vypi)
+                vytocenaUlohaText?.text  = getString(R.string.uloha_vypi)
                 ucastnici.add(cisloHracaNaRade)
                 kolko = 1
 
             } else if (cisloUlohy == 1) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_vypi2)
+                vytocenaUlohaText?.text = getString(R.string.uloha_vypi2)
                 ucastnici.add(cisloHracaNaRade)
                 kolko = 2
 
             } else if (cisloUlohy == 2) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_partner)
+                vytocenaUlohaText?.text = getString(R.string.uloha_partner)
                 if (ulohaPartner.size > 1) {
                     ulohaPartner.removeAt(0)
                     ulohaPartner.removeAt(0)
@@ -240,7 +256,7 @@ class MainSpin : AppCompatActivity() {
 
 
             } else if (cisloUlohy == 3) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_muzi)
+                vytocenaUlohaText?.text = getString(R.string.uloha_muzi)
                 for (i in 0 until pocetHracov){
                     if(listOrigPohlavi[i] == "muz"){
                         ucastnici.add(i)
@@ -249,7 +265,7 @@ class MainSpin : AppCompatActivity() {
                 kolko = 1
 
             } else if (cisloUlohy == 4) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_zeny)
+                vytocenaUlohaText?.text = getString(R.string.uloha_zeny)
                 for (i in 0 until pocetHracov){
                     if(listOrigPohlavi[i] == "zena"){
                         ucastnici.add(i)
@@ -258,19 +274,19 @@ class MainSpin : AppCompatActivity() {
                 kolko = 1
 
             } else if (cisloUlohy == 5) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_vsetci)
+                vytocenaUlohaText?.text = getString(R.string.uloha_vsetci)
                 for (i in 0 until pocetHracov){
                     ucastnici.add(i)
                 }
                 kolko = 1
 
             } else if (cisloUlohy == 6) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_nalej)
+                vytocenaUlohaText?.text = getString(R.string.uloha_nalej)
                 ucastnici.add(cisloHracaNaRade)
                 kolko = 1
 
             } else if (cisloUlohy == 7) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_stastlivec)
+                vytocenaUlohaText?.text = getString(R.string.uloha_stastlivec)
                 var najmensie = listOrigSkore[0]
                 for (i in 0 until pocetHracov){
                     if(listOrigSkore[i] < najmensie){
@@ -285,11 +301,11 @@ class MainSpin : AppCompatActivity() {
                 kolko = 1
 
             } else if (cisloUlohy == 8) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_drepy)
+                vytocenaUlohaText?.text = getString(R.string.uloha_drepy)
                 zafarbi(cisloHracaNaRade, "tmavozel")
 
             } else if (cisloUlohy == 9) {
-                vytocenaUlohaList[0].text = getString(R.string.uloha_pauza)
+                vytocenaUlohaText?.text = getString(R.string.uloha_pauza)
                 zafarbi(cisloHracaNaRade, "tmavozel")
             }
 
