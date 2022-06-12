@@ -3,6 +3,7 @@ package com.example.spinyourdrink
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainSpin : AppCompatActivity() {
 
+    var tocenieKolesa = false
     var pocetHracov = 0
+    var pocetUloh = 0
     var cisloHracaNaRade = 0
     var kolesoAktRotacia = 0
     var listTextViewRebricek = ArrayList<TextView>()
@@ -73,6 +76,22 @@ class MainSpin : AppCompatActivity() {
         listTextViewSkore.add(textViewSkore6)
 
         listOrigUloh = intent.getIntegerArrayListExtra("listUloh") as ArrayList<Int>
+        pocetUloh = listOrigUloh.size
+
+        if(pocetUloh == 10){
+            wheeelImage?.setImageResource(R.drawable.koleso10)
+        }else if(pocetUloh == 9){
+            wheeelImage?.setImageResource(R.drawable.koleso9)
+        }else if(pocetUloh == 8){
+            wheeelImage?.setImageResource(R.drawable.koleso8)
+        }else if(pocetUloh == 7){
+            wheeelImage?.setImageResource(R.drawable.koleso7)
+        }else if(pocetUloh == 6){
+            wheeelImage?.setImageResource(R.drawable.koleso6)
+        }else if(pocetUloh == 5){
+            wheeelImage?.setImageResource(R.drawable.koleso5)
+        }
+
         listOrigPohlavi = intent.getStringArrayListExtra("listPohlavi") as ArrayList<String>
         val listMien = intent.getStringArrayListExtra("listMien")
         if (listMien != null) {
@@ -84,12 +103,17 @@ class MainSpin : AppCompatActivity() {
         hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
         vytocenaUlohaText = findViewById<TextView>(R.id.TextViewVytocenaUloha)
 
+
         hracNaRadeText?.text = listOrigMena[cisloHracaNaRade]
 
 
 
         tocSaButton.setOnClickListener() {
-            tocKolesom()
+            if(!tocenieKolesa){
+                tocKolesom()
+                tocenieKolesa = true
+            }
+
         }
     }
 
@@ -100,7 +124,7 @@ class MainSpin : AppCompatActivity() {
             val nasob = (2..4 ).random()
             cislo += (360 * nasob)
             wheeelImage?.animate()?.setDuration((500 * nasob).toLong())?.rotationBy(0F + cislo)?.withEndAction {
-                val cisloVListe = kolesoAktRotacia / (360 / listOrigUloh.size)
+                val cisloVListe = kolesoAktRotacia / (360 / pocetUloh)
 
                 vykonajUlohu(listOrigUloh[cisloVListe])
 
@@ -111,6 +135,7 @@ class MainSpin : AppCompatActivity() {
 
 
                 hracNaRadeText?.text = listOrigMena[cisloHracaNaRade]
+                tocenieKolesa = false
             }
 
 
@@ -128,6 +153,11 @@ class MainSpin : AppCompatActivity() {
                 listTextViewSkore[i].setText("0")
                 listOrigSkore.add(0)
                 listAktSkore.add(0)
+            }
+            for(i in pocetHracov until 6){
+                listTextViewRebricek[i].visibility = View.INVISIBLE
+                listTextViewMena[i].visibility = View.INVISIBLE
+                listTextViewSkore[i].visibility = View.INVISIBLE
             }
         }
 
