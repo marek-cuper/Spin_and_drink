@@ -22,15 +22,17 @@
     <string name="uloha_nalej">Naliate do úst</string>
     <string name="uloha_stastlivec">Pije šťastlivec</string>
     <string name="uloha_drepy">Urob 10 drepov</string>
-    <string name="uloha_pauza">Daj si oddych</string>
+    <string name="uloha_pauza">Daj si pauzu</string>
     <string name="title_activity_main_spin">MainSpin</string>
     <string name="minimum_misii">Minimum 5 uloh</string>
     <string name="muzi_misia">Hra bez muzov</string>
     <string name="zeny_misia">Hra bez zien</string>
-    <string name="toci">Točí:</string>
-    <string name="toci_tlacitko">Toč sa!</string>
+    <string name="toci">Točí: </string>
+    <string name="toci_tlacitko">Spin</string>
     <string name="rebricek">Rebríček</string>
     <string name="mena_hracov">Meno hráča</string>
     <string name="pocet_shotov">Počet shotov</string>
     <string name="uloha_spin">Uloha:</string>
+    <string name="title_activity_info">Info</string>
+    <string name="title_activity_partner">Partner</string>
 </resources>

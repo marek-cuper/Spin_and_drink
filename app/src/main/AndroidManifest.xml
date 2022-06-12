@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpinYourDrink">
         <activity
+            android:name=".Partner"
+            android:exported="false"
+            android:label="@string/title_activity_partner"
+            android:theme="@style/Theme.SpinYourDrink.NoActionBar" />
+        <activity
+            android:name=".Info"
+            android:exported="false"
+            android:label="@string/title_activity_info"
+            android:theme="@style/Theme.SpinYourDrink.NoActionBar" />
+        <activity
             android:name=".pokus"
             android:exported="false" />
         <activity

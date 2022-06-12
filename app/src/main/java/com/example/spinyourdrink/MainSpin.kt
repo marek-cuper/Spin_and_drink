@@ -1,12 +1,15 @@
 package com.example.spinyourdrink
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
 class MainSpin : AppCompatActivity() {
@@ -14,6 +17,7 @@ class MainSpin : AppCompatActivity() {
     var tocenieKolesa = false
     var pocetHracov = 0
     var pocetUloh = 0
+    var aktualnaUloha = -1
     var cisloHracaNaRade = 0
     var kolesoAktRotacia = 0
     var listTextViewRebricek = ArrayList<TextView>()
@@ -115,8 +119,23 @@ class MainSpin : AppCompatActivity() {
             }
 
         }
+
+        vytocenaUlohaText?.setOnClickListener() {
+            if(!tocenieKolesa){
+                if(aktualnaUloha >= 0){
+                    intent = Intent(this, Info::class.java).apply {
+                        putExtra("cisloUlohy", aktualnaUloha)
+                    }
+                    startActivity(intent)
+
+                }
+            }
+
+
+        }
     }
 
+        @RequiresApi(Build.VERSION_CODES.HONEYCOMB_MR1)
         fun tocKolesom(){
             var cislo = (1..360 ).random()
             kolesoAktRotacia += cislo
@@ -125,8 +144,8 @@ class MainSpin : AppCompatActivity() {
             cislo += (360 * nasob)
             wheeelImage?.animate()?.setDuration((500 * nasob).toLong())?.rotationBy(0F + cislo)?.withEndAction {
                 val cisloVListe = kolesoAktRotacia / (360 / pocetUloh)
-
-                vykonajUlohu(listOrigUloh[cisloVListe])
+                aktualnaUloha = listOrigUloh[cisloVListe]
+                vykonajUlohu(aktualnaUloha)
 
                 cisloHracaNaRade++
                 if (cisloHracaNaRade == pocetHracov) {
@@ -281,6 +300,13 @@ class MainSpin : AppCompatActivity() {
                     genPartner = (0 until pocetHracov).random()
                 }
                 ulohaPartner.add(genPartner)
+
+                intent = Intent(this, Partner::class.java).apply {
+                    putExtra("listHracov", listOrigMena)
+                    putExtra("partneri", ulohaPartner)
+                }
+                startActivity(intent)
+
                 zafarbi(ulohaPartner[0], "fialova")
                 zafarbi(ulohaPartner[1], "fialova")
 

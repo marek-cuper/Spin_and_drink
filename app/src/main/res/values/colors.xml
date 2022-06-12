@@ -2,6 +2,7 @@
 <resources>
     <color name="boys">#75BCF4</color>
     <color name="girls">#E95E8D</color>
+    <color name="tlacitka">#D69906</color>
     <color name="light_purple">#FFE6FB</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
