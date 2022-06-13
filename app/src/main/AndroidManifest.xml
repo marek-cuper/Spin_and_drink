@@ -11,31 +11,34 @@
         android:theme="@style/Theme.SpinYourDrink">
         <activity
             android:name=".Partner"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_partner"
             android:theme="@style/Theme.SpinYourDrink.NoActionBar" />
         <activity
             android:name=".Info"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_info"
             android:theme="@style/Theme.SpinYourDrink.NoActionBar" />
         <activity
-            android:name=".pokus"
-            android:exported="false" />
-        <activity
             android:name=".MainSpin"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_main_spin"
             android:theme="@style/Theme.SpinYourDrink.NoActionBar" />
         <activity
             android:name=".MissionSettings"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_mission_settings"
             android:theme="@style/Theme.SpinYourDrink.NoActionBar" />
-        <activity android:name=".NamesSettings" />
+        <activity android:name=".NamesSettings"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".StartPage"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

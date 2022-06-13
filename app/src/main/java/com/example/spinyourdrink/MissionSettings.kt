@@ -1,13 +1,19 @@
 package com.example.spinyourdrink
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 
 
 class MissionSettings : AppCompatActivity() {
@@ -16,6 +22,7 @@ class MissionSettings : AppCompatActivity() {
     var zeny = false
     var muzi = false
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,12 +89,15 @@ class MissionSettings : AppCompatActivity() {
                 }
             }
 
+            notification()
+
             intent = Intent(this, MainSpin::class.java).apply {
                 putExtra("listMien", listMien)
                 putExtra("listPohlavi", listPohlavi)
                 putExtra("listUloh", listUloh)
             }
             startActivity(intent)
+
 
         }
 
@@ -136,6 +146,27 @@ class MissionSettings : AppCompatActivity() {
         }
 
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun notification() {
+        val channel : NotificationChannel = NotificationChannel("ID","ID", NotificationManager.IMPORTANCE_HIGH)
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+        val builder: NotificationCompat.Builder = NotificationCompat.Builder(applicationContext)
+            .setSmallIcon(android.R.drawable.btn_star_big_on) //set icon for notification
+            .setContentTitle("Zatoč, vypi a ži!") //set title of notification
+            .setContentText("Tak podme na vec!")
+            .setChannelId("ID")//this is notification message
+            .setAutoCancel(true) // makes auto cancel of notification
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT) //set priority of notification
+
+        val manager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.notify(0, builder.build())
+
+    }
+
     fun minimum() {
         val pocUloh = pocetUloh()
         if(pocUloh < 5){

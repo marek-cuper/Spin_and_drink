@@ -168,7 +168,7 @@
             android:id="@+id/pokracovatButtonMission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="30dp"
             android:text="@string/pokracovat"
             android:backgroundTint="@color/tlacitka"/>

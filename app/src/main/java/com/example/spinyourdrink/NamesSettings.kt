@@ -1,12 +1,18 @@
 package com.example.spinyourdrink
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 
 class NamesSettings : AppCompatActivity() {
     var pocetHracov = 0;
@@ -15,6 +21,7 @@ class NamesSettings : AppCompatActivity() {
     var zobrazenieText = ArrayList<EditText>()
     var zobrazenieSwitch = ArrayList<Switch>()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceType", "UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +81,8 @@ class NamesSettings : AppCompatActivity() {
             }
         })
         pokracovatButton.setOnClickListener() {
+
+            notification()
             pocetHracov = pocetHracov + hraciSeekBar.progress
             listMien.add(textHrac1.text.toString())
             listMien.add(textHrac2.text.toString())
@@ -155,6 +164,25 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun notification() {
+        val channel : NotificationChannel = NotificationChannel("ID","ID", NotificationManager.IMPORTANCE_HIGH)
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+        val builder: NotificationCompat.Builder = NotificationCompat.Builder(applicationContext)
+            .setSmallIcon(android.R.drawable.stat_sys_warning) //set icon for notification
+            .setContentTitle("Vyber misie") //set title of notification
+            .setContentText("Vyber si misie ktoré zabavia teba aj tvojich kamošov!")
+            .setChannelId("ID")//this is notification message
+            .setAutoCancel(true) // makes auto cancel of notification
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT) //set priority of notification
+
+        val manager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.notify(0, builder.build())
     }
 
     fun pohlavieString(pohlavie: Boolean): String {

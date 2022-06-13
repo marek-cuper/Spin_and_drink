@@ -3,13 +3,8 @@ package com.example.spinyourdrink
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.spinyourdrink.databinding.ActivityPartnerBinding
+
 
 class Partner : AppCompatActivity() {
 
