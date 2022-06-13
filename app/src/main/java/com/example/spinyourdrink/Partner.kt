@@ -29,6 +29,12 @@ class Partner : AppCompatActivity() {
 
             if(hraci.size - 1 == 5){
                 wheeelImage?.setImageResource(R.drawable.koleso5)
+            }else if(hraci.size - 1 == 4){
+                wheeelImage?.setImageResource(R.drawable.koleso4)
+            }else if(hraci.size - 1 == 3){
+                wheeelImage?.setImageResource(R.drawable.koleso3)
+            }else if(hraci.size - 1 == 2){
+                wheeelImage?.setImageResource(R.drawable.koleso2)
             }
 
             var cast = 360 / (hraci.size - 1)
