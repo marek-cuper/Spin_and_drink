@@ -3,42 +3,42 @@ package com.example.spinyourdrink
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
 class MainSpin : AppCompatActivity() {
 
-    var tocenieKolesa = false
-    var pocetHracov = 0
-    var pocetUloh = 0
-    var aktualnaUloha = -1
-    var cisloHracaNaRade = 0
-    var kolesoAktRotacia = 0
-    var listTextViewRebricek = ArrayList<TextView>()
-    var listTextViewMena = ArrayList<TextView>()
-    var listTextViewSkore = ArrayList<TextView>()
-    var listOrigUloh = ArrayList<Int>()
-    var listOrigPohlavi = ArrayList<String>()
-    var listOrigMena = ArrayList<String>()
-    var listOrigSkore = ArrayList<Int>()
-    var listAktMena = ArrayList<String>()
-    var listAktSkore = ArrayList<Int>()
-    var ulohaPartner = ArrayList<Int>()
+    private var tocenieKolesa = false
+    private var pocetHracov = 0
+    private var pocetUloh = 0
+    private var aktualnaUloha = -1
+    private var cisloHracaNaRade = 0
+    private  var kolesoAktRotacia = 0
+    private var listTextViewRebricek = ArrayList<TextView>()
+    private var listTextViewMena = ArrayList<TextView>()
+    private var listTextViewSkore = ArrayList<TextView>()
+    private var listOrigUloh = ArrayList<Int>()
+    private var listOrigPohlavi = ArrayList<String>()
+    private var listOrigMena = ArrayList<String>()
+    private var listOrigSkore = ArrayList<Int>()
+    private var listAktMena = ArrayList<String>()
+    private var listAktSkore = ArrayList<Int>()
+    private var ulohaPartner = ArrayList<Int>()
     private var wheeelImage: ImageView? = null
     private var vytocenaUlohaText: TextView? = null
     private var hracNaRadeText: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("MainSpin", "onCreate called")
         setContentView(R.layout.activity_main_spin)
 
-        wheeelImage = findViewById<ImageView>(R.id.imageViewKoleso)
+        wheeelImage = findViewById(R.id.imageViewKoleso)
 
         val textViewRebricek1 = findViewById<TextView>(R.id.textViewRebricek1)
         val textViewRebricek2 = findViewById<TextView>(R.id.textViewRebricek2)
@@ -82,18 +82,25 @@ class MainSpin : AppCompatActivity() {
         listOrigUloh = intent.getIntegerArrayListExtra("listUloh") as ArrayList<Int>
         pocetUloh = listOrigUloh.size
 
-        if(pocetUloh == 10){
-            wheeelImage?.setImageResource(R.drawable.koleso10)
-        }else if(pocetUloh == 9){
-            wheeelImage?.setImageResource(R.drawable.koleso9)
-        }else if(pocetUloh == 8){
-            wheeelImage?.setImageResource(R.drawable.koleso8)
-        }else if(pocetUloh == 7){
-            wheeelImage?.setImageResource(R.drawable.koleso7)
-        }else if(pocetUloh == 6){
-            wheeelImage?.setImageResource(R.drawable.koleso6)
-        }else if(pocetUloh == 5){
-            wheeelImage?.setImageResource(R.drawable.koleso5)
+        when (pocetUloh) {
+            10 -> {
+                wheeelImage?.setImageResource(R.drawable.koleso10)
+            }
+            9 -> {
+                wheeelImage?.setImageResource(R.drawable.koleso9)
+            }
+            8 -> {
+                wheeelImage?.setImageResource(R.drawable.koleso8)
+            }
+            7 -> {
+                wheeelImage?.setImageResource(R.drawable.koleso7)
+            }
+            6 -> {
+                wheeelImage?.setImageResource(R.drawable.koleso6)
+            }
+            5 -> {
+                wheeelImage?.setImageResource(R.drawable.koleso5)
+            }
         }
 
         listOrigPohlavi = intent.getStringArrayListExtra("listPohlavi") as ArrayList<String>
@@ -104,15 +111,15 @@ class MainSpin : AppCompatActivity() {
         }
 
         val tocSaButton = findViewById<Button>(R.id.tocSaButton)
-        hracNaRadeText = findViewById<TextView>(R.id.hrac_na_rade)
-        vytocenaUlohaText = findViewById<TextView>(R.id.TextViewVytocenaUloha)
+        hracNaRadeText = findViewById(R.id.hrac_na_rade)
+        vytocenaUlohaText = findViewById(R.id.TextViewVytocenaUloha)
 
 
         hracNaRadeText?.text = listOrigMena[cisloHracaNaRade]
 
 
 
-        tocSaButton.setOnClickListener() {
+        tocSaButton.setOnClickListener {
             if(!tocenieKolesa){
                 tocKolesom()
                 tocenieKolesa = true
@@ -120,7 +127,7 @@ class MainSpin : AppCompatActivity() {
 
         }
 
-        vytocenaUlohaText?.setOnClickListener() {
+        vytocenaUlohaText?.setOnClickListener {
             if(!tocenieKolesa){
                 if(aktualnaUloha >= 0){
                     intent = Intent(this, Info::class.java).apply {
@@ -134,9 +141,25 @@ class MainSpin : AppCompatActivity() {
 
         }
     }
+    override fun onStart() {
+        super.onStart()
+        Log.i("MainSpin", "onStart called")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i("MainSpin", "onResume called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.i("MainSpin", "onPause called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.i("MainSpin", "onStop called")
+    }
 
-        @RequiresApi(Build.VERSION_CODES.HONEYCOMB_MR1)
-        fun tocKolesom(){
+
+    private fun tocKolesom(){
             var cislo = (1..360 ).random()
             kolesoAktRotacia += cislo
             kolesoAktRotacia %= 360
@@ -160,16 +183,17 @@ class MainSpin : AppCompatActivity() {
 
         }
 
+
         @SuppressLint("SetTextI18n")
         fun nastavRebricekZaciatok(vstupListMien: ArrayList<String>) {
             for (i in 0 until pocetHracov) {
-                listTextViewRebricek[i].setText((i + 1).toString() + ".")
+                listTextViewRebricek[i].text = (i + 1).toString() + "."
 
-                listTextViewMena[i].setText(vstupListMien[i])
+                listTextViewMena[i].text = vstupListMien[i]
                 listOrigMena.add(vstupListMien[i])
                 listAktMena.add(vstupListMien[i])
 
-                listTextViewSkore[i].setText("0")
+                listTextViewSkore[i].text = "0"
                 listOrigSkore.add(0)
                 listAktSkore.add(0)
             }
@@ -180,8 +204,8 @@ class MainSpin : AppCompatActivity() {
             }
         }
 
-        @SuppressLint("ResourceType")
-        fun navys(cislaVListe: ArrayList<Int>, kolko: Int) {
+
+        private fun navys(cislaVListe: ArrayList<Int>, kolko: Int) {
 
             for (i in 0 until cislaVListe.size) {
                 listOrigSkore[cislaVListe[i]] = listOrigSkore[cislaVListe[i]] + kolko
@@ -195,7 +219,7 @@ class MainSpin : AppCompatActivity() {
             }
         }
 
-        fun vybielRebricek(){
+        private fun vybielRebricek(){
             for (i in 0 until pocetHracov) {
                 zafarbi(i, "biela")
             }
@@ -204,29 +228,34 @@ class MainSpin : AppCompatActivity() {
         @SuppressLint("ResourceType")
         fun zafarbi(cislo: Int, farba: String) {
             val pozicia = aktualnaPozicia(cislo)
-            if (farba == "zelena") {
-                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
-                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
-                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
-            }  else if(farba == "tmavozel") {
-                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
-                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
-                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
+            when (farba) {
+                "zelena" -> {
+                    listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
+                    listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
+                    listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.light_green)))
+                }
+                "tmavozel" -> {
+                    listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
+                    listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
+                    listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.dark_green)))
 
-            }  else if(farba == "biela") {
-                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
-                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
-                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
+                }
+                "biela" -> {
+                    listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
+                    listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
+                    listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.white)))
 
-            } else {
-                listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
-                listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
-                listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+                }
+                else -> {
+                    listTextViewRebricek[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+                    listTextViewMena[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+                    listTextViewSkore[pozicia].setBackgroundColor(Color.parseColor(getString(R.color.purple_200)))
+                }
             }
 
         }
 
-        fun aktualnaPozicia(cisloOriginal: Int): Int {
+        private fun aktualnaPozicia(cisloOriginal: Int): Int {
             val meno = listOrigMena[cisloOriginal]
             for (i in 0 until pocetHracov) {
                 if (meno == listAktMena[i]) {
@@ -236,15 +265,15 @@ class MainSpin : AppCompatActivity() {
             return 0
         }
 
-        fun aktualizujrebricek() {
+        private fun aktualizujrebricek() {
             for (i in 0 until pocetHracov) {
                 listAktMena.removeAt(0)
                 listAktSkore.removeAt(0)
             }
 
 
-            var pomocnyListMena = ArrayList<String>()
-            var pomocnyListSkore = ArrayList<Int>()
+            val pomocnyListMena = ArrayList<String>()
+            val pomocnyListSkore = ArrayList<Int>()
             for (i in 0 until pocetHracov) {
                 pomocnyListMena.add(listOrigMena[i])
                 pomocnyListSkore.add(listOrigSkore[i])
@@ -273,96 +302,107 @@ class MainSpin : AppCompatActivity() {
             }
         }
 
-        fun vykonajUlohu(cisloUlohy: Int) {
+        private fun vykonajUlohu(cisloUlohy: Int) {
             vybielRebricek()
-            var ucastnici = ArrayList<Int>()
+            val ucastnici = ArrayList<Int>()
             var kolko = 0
 
-            if (cisloUlohy == 0) {
-                vytocenaUlohaText?.text  = getString(R.string.uloha_vypi)
-                ucastnici.add(cisloHracaNaRade)
-                kolko = 1
+            when (cisloUlohy) {
+                0 -> {
+                    vytocenaUlohaText?.text  = getString(R.string.uloha_vypi)
+                    ucastnici.add(cisloHracaNaRade)
+                    kolko = 1
 
-            } else if (cisloUlohy == 1) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_vypi2)
-                ucastnici.add(cisloHracaNaRade)
-                kolko = 2
-
-            } else if (cisloUlohy == 2) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_partner)
-                if (ulohaPartner.size > 1) {
-                    ulohaPartner.removeAt(0)
-                    ulohaPartner.removeAt(0)
                 }
-                ulohaPartner.add(cisloHracaNaRade)
-                var genPartner = (0 until pocetHracov).random()
-                while (genPartner == cisloHracaNaRade) {
-                    genPartner = (0 until pocetHracov).random()
+                1 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_vypi2)
+                    ucastnici.add(cisloHracaNaRade)
+                    kolko = 2
+
                 }
-                ulohaPartner.add(genPartner)
+                2 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_partner)
+                    if (ulohaPartner.size > 1) {
+                        ulohaPartner.removeAt(0)
+                        ulohaPartner.removeAt(0)
+                    }
+                    ulohaPartner.add(cisloHracaNaRade)
+                    var genPartner = (0 until pocetHracov).random()
+                    while (genPartner == cisloHracaNaRade) {
+                        genPartner = (0 until pocetHracov).random()
+                    }
+                    ulohaPartner.add(genPartner)
 
-                intent = Intent(this, Partner::class.java).apply {
-                    putExtra("listHracov", listOrigMena)
-                    putExtra("partneri", ulohaPartner)
+                    intent = Intent(this, Partner::class.java).apply {
+                        putExtra("listHracov", listOrigMena)
+                        putExtra("partneri", ulohaPartner)
+                    }
+                    startActivity(intent)
+
+                    zafarbi(ulohaPartner[0], "fialova")
+                    zafarbi(ulohaPartner[1], "fialova")
+
+
                 }
-                startActivity(intent)
+                3 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_muzi)
+                    for (i in 0 until pocetHracov){
+                        if(listOrigPohlavi[i] == "muz"){
+                            ucastnici.add(i)
+                        }
+                    }
+                    kolko = 1
 
-                zafarbi(ulohaPartner[0], "fialova")
-                zafarbi(ulohaPartner[1], "fialova")
+                }
+                4 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_zeny)
+                    for (i in 0 until pocetHracov){
+                        if(listOrigPohlavi[i] == "zena"){
+                            ucastnici.add(i)
+                        }
+                    }
+                    kolko = 1
 
-
-            } else if (cisloUlohy == 3) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_muzi)
-                for (i in 0 until pocetHracov){
-                    if(listOrigPohlavi[i] == "muz"){
+                }
+                5 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_vsetci)
+                    for (i in 0 until pocetHracov){
                         ucastnici.add(i)
                     }
-                }
-                kolko = 1
+                    kolko = 1
 
-            } else if (cisloUlohy == 4) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_zeny)
-                for (i in 0 until pocetHracov){
-                    if(listOrigPohlavi[i] == "zena"){
-                        ucastnici.add(i)
+                }
+                6 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_nalej)
+                    ucastnici.add(cisloHracaNaRade)
+                    kolko = 1
+
+                }
+                7 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_stastlivec)
+                    var najmensie = listOrigSkore[0]
+                    for (i in 0 until pocetHracov){
+                        if(listOrigSkore[i] < najmensie){
+                            najmensie = listOrigSkore[i]
+                        }
                     }
-                }
-                kolko = 1
-
-            } else if (cisloUlohy == 5) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_vsetci)
-                for (i in 0 until pocetHracov){
-                    ucastnici.add(i)
-                }
-                kolko = 1
-
-            } else if (cisloUlohy == 6) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_nalej)
-                ucastnici.add(cisloHracaNaRade)
-                kolko = 1
-
-            } else if (cisloUlohy == 7) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_stastlivec)
-                var najmensie = listOrigSkore[0]
-                for (i in 0 until pocetHracov){
-                    if(listOrigSkore[i] < najmensie){
-                        najmensie = listOrigSkore[i]
+                    for (i in 0 until pocetHracov){
+                        if(listOrigSkore[i] == najmensie){
+                            ucastnici.add(i)
+                        }
                     }
-                }
-                for (i in 0 until pocetHracov){
-                    if(listOrigSkore[i] == najmensie){
-                        ucastnici.add(i)
-                    }
-                }
-                kolko = 1
+                    kolko = 1
 
-            } else if (cisloUlohy == 8) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_drepy)
-                zafarbi(cisloHracaNaRade, "tmavozel")
+                }
+                8 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_drepy)
+                    zafarbi(cisloHracaNaRade, "tmavozel")
 
-            } else if (cisloUlohy == 9) {
-                vytocenaUlohaText?.text = getString(R.string.uloha_pauza)
-                zafarbi(cisloHracaNaRade, "tmavozel")
+                }
+                9 -> {
+                    vytocenaUlohaText?.text = getString(R.string.uloha_pauza)
+                    zafarbi(cisloHracaNaRade, "tmavozel")
+                }
             }
 
             if (kolko != 0){

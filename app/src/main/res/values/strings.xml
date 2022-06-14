@@ -23,6 +23,20 @@
     <string name="uloha_stastlivec">Pije šťastlivec</string>
     <string name="uloha_drepy">Urob 10 drepov</string>
     <string name="uloha_pauza">Daj si pauzu</string>
+
+    <string name="popis_vypi">Vypije shot ten kto bol na rade s točením kolesa, prípadne ešte ten kto je jeho parťák</string>
+    <string name="popis_vypi2">Vypije dva shoty ten kto bol na rade s točením kolesa, prípadne ešte ten kto je jeho parťák</string>
+    <string name="popis_partner">Hráč ktorý bol na rade s točením dostane nahodného hráča za parťáka, parťáci pijú vždy spolu." +
+                    "Ak pije prvý, pije aj druhý. Parťákmi ostávate dokým sa nevyžrebuje ďalšia dvojica</string>
+    <string name="popis_muzi">Pijú shot všetci muži, prípadne aj parťáčka</string>
+    <string name="popis_zeny">Pijú shot všetky ženy, prípadne aj parťák</string>
+    <string name="popis_vsetci">Všetci pijú shot</string>
+    <string name="popis_nalej">Hráčovi ktorý bol na rade s točením kolesa bude naliaty shot do úst od hráča po jeho pravici," +
+                    " prípadne hráč naleje aj jeho parťákovi</string>
+    <string name="popis_stastlivec">Šťastlivci ktorí majú najmenej shotov v sebe vypijú shot, prípadne ešte jeho parťák</string>
+    <string name="popis_drepy">Hráč ktorý bol na rade s točením kolesa spraví 10 drepov</string>
+    <string name="popis_pauza">Hráč ktorý bol na rade s točením kolesa nespraví nič, má PAUZU</string>
+
     <string name="title_activity_main_spin">MainSpin</string>
     <string name="minimum_misii">Minimum 5 uloh</string>
     <string name="muzi_misia">Hra bez muzov</string>
@@ -35,4 +49,15 @@
     <string name="uloha_spin">Uloha:</string>
     <string name="title_activity_info">Info</string>
     <string name="title_activity_partner">Partner</string>
+    <string name="pointer">ukazovatel</string>
+    <string name="koleso">koleso</string>
+    <string name="uloha">Uloha:</string>
+    <string name="meno">Meno</string>
+    <string name="meno_hraca_1">meno hraca 1</string>
+    <string name="meno_hraca_2">meno hraca 2</string>
+    <string name="meno_hraca_3">meno hraca 3</string>
+    <string name="meno_hraca_4">meno hraca 4</string>
+    <string name="meno_hraca_5">meno hraca 5</string>
+    <string name="meno_hraca_6">meno hraca 6</string>
+    <string name="pohlavie">Pohlavie</string>
 </resources>

@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -15,18 +16,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 
 class NamesSettings : AppCompatActivity() {
-    var pocetHracov = 0;
-    var listMien = ArrayList<String>()
-    var listPohlavi = ArrayList<String>()
-    var zobrazenieText = ArrayList<EditText>()
-    var zobrazenieSwitch = ArrayList<Switch>()
+    private var pocetHracov = 0
+    private var listMien = ArrayList<String>()
+    private var listPohlavi = ArrayList<String>()
+    private var zobrazenieText = ArrayList<EditText>()
+    private var zobrazenieSwitch = ArrayList<Switch>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceType", "UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("NamesSettings", "onCreate called")
         setContentView(R.layout.activity_names_settings)
-        pocetHracov = 3;
+        pocetHracov = 3
 
         val pokracovatButton = findViewById<Button>(R.id.pokracovatButtonNames)
 
@@ -80,10 +82,10 @@ class NamesSettings : AppCompatActivity() {
                 }
             }
         })
-        pokracovatButton.setOnClickListener() {
+        pokracovatButton.setOnClickListener {
 
             notification()
-            pocetHracov = pocetHracov + hraciSeekBar.progress
+            pocetHracov += hraciSeekBar.progress
             listMien.add(textHrac1.text.toString())
             listMien.add(textHrac2.text.toString())
             listMien.add(textHrac3.text.toString())
@@ -116,7 +118,7 @@ class NamesSettings : AppCompatActivity() {
         }
 
 
-        switchHrac1.setOnClickListener() {
+        switchHrac1.setOnClickListener {
             if(switchHrac1.isChecked){
                 textHrac1.setBackgroundColor(Color.parseColor(getString(R.color.girls)))
             } else{
@@ -124,7 +126,7 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
-        switchHrac2.setOnClickListener() {
+        switchHrac2.setOnClickListener {
             if(switchHrac2.isChecked){
                 textHrac2.setBackgroundColor(Color.parseColor(getString(R.color.girls)))
             } else{
@@ -132,7 +134,7 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
-        switchHrac3.setOnClickListener() {
+        switchHrac3.setOnClickListener {
             if(switchHrac3.isChecked){
                 textHrac3.setBackgroundColor(Color.parseColor(getString(R.color.girls)))
             } else{
@@ -140,7 +142,7 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
-        switchHrac4.setOnClickListener() {
+        switchHrac4.setOnClickListener {
             if(switchHrac4.isChecked){
                 textHrac4.setBackgroundColor(Color.parseColor(getString(R.color.girls)))
             } else{
@@ -148,7 +150,7 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
-        switchHrac5.setOnClickListener() {
+        switchHrac5.setOnClickListener {
             if(switchHrac5.isChecked){
                 textHrac5.setBackgroundColor(Color.parseColor(getString(R.color.girls)))
             } else{
@@ -156,7 +158,7 @@ class NamesSettings : AppCompatActivity() {
             }
         }
 
-        switchHrac6.setOnClickListener() {
+        switchHrac6.setOnClickListener {
             if(switchHrac6.isChecked){
                 textHrac6.setBackgroundColor(Color.parseColor(getString(R.color.girls)))
             } else{
@@ -166,9 +168,31 @@ class NamesSettings : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.i("NameSettings", "onStart called")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i("NameSettings", "onResume called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.i("NameSettings", "onPause called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.i("NameSettings", "onStop called")
+    }
+
+
+
+
+
+    @Suppress("DEPRECATION")
     @RequiresApi(Build.VERSION_CODES.O)
     fun notification() {
-        val channel : NotificationChannel = NotificationChannel("ID","ID", NotificationManager.IMPORTANCE_HIGH)
+        val channel = NotificationChannel("ID","ID", NotificationManager.IMPORTANCE_HIGH)
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
 
@@ -185,11 +209,11 @@ class NamesSettings : AppCompatActivity() {
         manager.notify(0, builder.build())
     }
 
-    fun pohlavieString(pohlavie: Boolean): String {
-        if(pohlavie){
-            return "zena"
+    private fun pohlavieString(pohlavie: Boolean): String {
+        return if(pohlavie){
+            "zena"
         } else{
-            return "muz"
+            "muz"
         }
     }
 }

@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Switch
@@ -18,14 +19,15 @@ import androidx.core.app.NotificationCompat
 
 class MissionSettings : AppCompatActivity() {
 
-    var listSwitchov = ArrayList<Switch>()
-    var zeny = false
-    var muzi = false
+    private var listSwitchov = ArrayList<Switch>()
+    private var zeny = false
+    private var muzi = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("MissionSettings", "onCreate called")
         setContentView(R.layout.activity_mission_settings)
 
         //data z predosleho fragmentu
@@ -75,14 +77,14 @@ class MissionSettings : AppCompatActivity() {
         listSwitchov.add(switchDrepy)
         listSwitchov.add(switchPauza)
 
-        pokracovatButton.setOnClickListener() {
+        pokracovatButton.setOnClickListener {
             if(!muzi){
                 listSwitchov.add(3, switchMuzi)
             }
             if(!zeny){
                 listSwitchov.add(4, switchZeny)
             }
-            var listUloh = ArrayList<Int>()
+            val listUloh = ArrayList<Int>()
             for (i in 0 until listSwitchov.size){
                 if(listSwitchov[i].isChecked){
                     listUloh.add(i)
@@ -102,54 +104,72 @@ class MissionSettings : AppCompatActivity() {
         }
 
 
-        switchVypi.setOnClickListener() {
+        switchVypi.setOnClickListener {
             minimum()
         }
-        switchVypi2.setOnClickListener() {
+        switchVypi2.setOnClickListener {
             minimum()
         }
-        switchPartner.setOnClickListener() {
+        switchPartner.setOnClickListener {
             minimum()
         }
-        switchMuzi.setOnClickListener() {
+        switchMuzi.setOnClickListener {
             if(muzi){
                 minimum()
             } else{
                 switchMuzi.isChecked = false
-                textViewUpozornenie.setText(getString(R.string.muzi_misia))
+                textViewUpozornenie.text = getString(R.string.muzi_misia)
                 textViewUpozornenie.visibility = View.VISIBLE
             }
         }
-        switchZeny.setOnClickListener() {
+        switchZeny.setOnClickListener {
             if(zeny){
                 minimum()
             } else{
                 switchZeny.isChecked = false
-                textViewUpozornenie.setText(getString(R.string.zeny_misia))
+                textViewUpozornenie.text = getString(R.string.zeny_misia)
                 textViewUpozornenie.visibility = View.VISIBLE
             }
         }
-        switchVsetci.setOnClickListener() {
+        switchVsetci.setOnClickListener {
             minimum()
         }
-        switchNalej.setOnClickListener() {
+        switchNalej.setOnClickListener {
             minimum()
         }
-        switchStastlivec.setOnClickListener() {
+        switchStastlivec.setOnClickListener {
             minimum()
         }
-        switchDrepy.setOnClickListener() {
+        switchDrepy.setOnClickListener {
             minimum()
         }
-        switchPauza.setOnClickListener() {
+        switchPauza.setOnClickListener {
             minimum()
         }
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.i("MissionSettings", "onStart called")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i("MissionSettings", "onResume called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.i("MissionSettings", "onPause called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.i("MissionSettings", "onStop called")
+    }
+
+    @Suppress("DEPRECATION")
     @RequiresApi(Build.VERSION_CODES.O)
     fun notification() {
-        val channel : NotificationChannel = NotificationChannel("ID","ID", NotificationManager.IMPORTANCE_HIGH)
+        val channel = NotificationChannel("ID","ID", NotificationManager.IMPORTANCE_HIGH)
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
 
@@ -167,11 +187,11 @@ class MissionSettings : AppCompatActivity() {
 
     }
 
-    fun minimum() {
+    private fun minimum() {
         val pocUloh = pocetUloh()
         if(pocUloh < 5){
             val textViewUpozornenie = findViewById<TextView>(R.id.upozornenieMission)
-            textViewUpozornenie.setText(getString(R.string.minimum_misii))
+            textViewUpozornenie.text = getString(R.string.minimum_misii)
             textViewUpozornenie.visibility = View.VISIBLE
 
             var cislo = (0 until listSwitchov.size).random()
@@ -182,7 +202,7 @@ class MissionSettings : AppCompatActivity() {
         }
     }
 
-    fun pocetUloh(): Int {
+    private fun pocetUloh(): Int {
         var pocetUloh = 0
         for (i in 0 until listSwitchov.size){
             if(listSwitchov[i].isChecked){

@@ -40,7 +40,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_vypi"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchVypi2"
@@ -55,7 +55,7 @@
             android:text="@string/uloha_vypi2"
             android:textAlignment="center"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchPartner"
@@ -69,7 +69,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_partner"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchMuzi"
@@ -82,7 +82,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_muzi"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchZeny"
@@ -95,7 +95,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_zeny"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchVsetci"
@@ -109,7 +109,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_vsetci"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchNalej"
@@ -122,7 +122,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_nalej"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switchStastlivec"
@@ -135,7 +135,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_stastlivec"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switch_drepy"
@@ -149,7 +149,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_drepy"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Switch
             android:id="@+id/switch_pauza"
@@ -162,7 +162,7 @@
             android:scaleY="1.75"
             android:text="@string/uloha_pauza"
             android:textColor="@color/black"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Button
             android:id="@+id/pokracovatButtonMission"
