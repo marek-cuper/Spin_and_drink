@@ -61,7 +61,7 @@
             android:contentDescription="@string/koleso"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:srcCompat="@drawable/koleso5" />
+            app:srcCompat="@drawable/koleso6" />
 
         <ImageView
             android:id="@+id/imageViewPointer"

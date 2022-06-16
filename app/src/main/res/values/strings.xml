@@ -31,8 +31,8 @@
     <string name="popis_muzi">Pijú shot všetci muži, prípadne aj parťáčka</string>
     <string name="popis_zeny">Pijú shot všetky ženy, prípadne aj parťák</string>
     <string name="popis_vsetci">Všetci pijú shot</string>
-    <string name="popis_nalej">Hráčovi ktorý bol na rade s točením kolesa bude naliaty shot do úst od hráča po jeho pravici," +
-                    " prípadne hráč naleje aj jeho parťákovi</string>
+    <string name="popis_nalej">Hráčovi ktorý bol na rade s točením kolesa bude naliaty shot do úst od hráča po jeho pravici,
+                    prípadne hráč naleje aj jeho parťákovi</string>
     <string name="popis_stastlivec">Šťastlivci ktorí majú najmenej shotov v sebe vypijú shot, prípadne ešte jeho parťák</string>
     <string name="popis_drepy">Hráč ktorý bol na rade s točením kolesa spraví 10 drepov</string>
     <string name="popis_pauza">Hráč ktorý bol na rade s točením kolesa nespraví nič, má PAUZU</string>

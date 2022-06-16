@@ -6,7 +6,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-
+/**
+ * @author Marek Cuper
+ * Obrazovka ktorá slúži na grafické vylosovanie picieho partnera pre daného hráča.
+ * */
 class Partner : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +51,6 @@ class Partner : AppCompatActivity() {
             wheeelImage?.animate()?.setDuration((500 * nasob).toLong())?.rotationBy(0F + cislo)?.withEndAction {
                 textPartne2.text = hraci[partneri[1]!!]
             }
-
-
-
-
 
         }
     }

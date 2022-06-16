@@ -16,7 +16,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 
-
+/**
+ * @author Marek Cuper
+ * Obrazovka ktorá slúži na vybranie misií
+ * */
 class MissionSettings : AppCompatActivity() {
 
     private var listSwitchov = ArrayList<Switch>()
@@ -103,7 +106,9 @@ class MissionSettings : AppCompatActivity() {
 
         }
 
-
+        /**
+         * Listeneri
+         */
         switchVypi.setOnClickListener {
             minimum()
         }
@@ -149,6 +154,9 @@ class MissionSettings : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+    }
+
     override fun onStart() {
         super.onStart()
         Log.i("MissionSettings", "onStart called")
@@ -165,7 +173,9 @@ class MissionSettings : AppCompatActivity() {
         super.onStop()
         Log.i("MissionSettings", "onStop called")
     }
-
+    /**
+     * Funkcia slúži na zobrazenie notifikácie
+     */
     @Suppress("DEPRECATION")
     @RequiresApi(Build.VERSION_CODES.O)
     fun notification() {
@@ -187,6 +197,9 @@ class MissionSettings : AppCompatActivity() {
 
     }
 
+    /**
+     * Funkcia slúži na overenie minimálneho počtu úloh
+     */
     private fun minimum() {
         val pocUloh = pocetUloh()
         if(pocUloh < 5){
@@ -202,6 +215,10 @@ class MissionSettings : AppCompatActivity() {
         }
     }
 
+    /**
+     * @return pocetUloh
+     * Funkcia vráti počet úloh
+     */
     private fun pocetUloh(): Int {
         var pocetUloh = 0
         for (i in 0 until listSwitchov.size){

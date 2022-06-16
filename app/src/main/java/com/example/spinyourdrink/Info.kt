@@ -6,7 +6,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
-
+/**
+ * @author Marek Cuper
+ * Obrazovka na ktorej sa vypíše vysvetlivka k danej úlohe.
+ * */
 class Info : AppCompatActivity() {
 
     private var cisloUlohy = 0

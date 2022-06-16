@@ -12,7 +12,10 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 
-
+/**
+ * @author Marek Cuper
+ * Úvodná obrazovka
+ * */
 class StartPage : AppCompatActivity() {
 
 
@@ -27,12 +30,18 @@ class StartPage : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.start_button)
 
+        /**
+         * Listeneri
+         */
         button.setOnClickListener {
             notification()
             val intent = Intent(this,NamesSettings::class.java)
             startActivity(intent)
         }
 
+    }
+
+    override fun onBackPressed() {
     }
 
     override fun onStart() {
@@ -53,7 +62,9 @@ class StartPage : AppCompatActivity() {
     }
 
 
-
+    /**
+     * Funkcia slúži na zobrazenie notifikácie
+     */
     @Suppress("DEPRECATION")
     @RequiresApi(Build.VERSION_CODES.O)
     fun notification() {
@@ -72,7 +83,6 @@ class StartPage : AppCompatActivity() {
         val manager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.notify(0, builder.build())
-
     }
 
 

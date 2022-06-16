@@ -15,6 +15,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 
+/**
+ * @author Marek Cuper
+ * Obrazovka ktorá slúži na nastavenie mien a pohlaví hráčov
+ * */
 class NamesSettings : AppCompatActivity() {
     private var pocetHracov = 0
     private var listMien = ArrayList<String>()
@@ -54,6 +58,9 @@ class NamesSettings : AppCompatActivity() {
         zobrazenieSwitch.add(switchHrac5)
         zobrazenieSwitch.add(switchHrac6)
 
+        /**
+         * Zobrazenie switchov podľa počtu hráčov(na SeekBar)
+         */
         for (i in 0..2){
             zobrazenieText[i].visibility = View.INVISIBLE
             zobrazenieSwitch[i].visibility = View.INVISIBLE
@@ -82,6 +89,9 @@ class NamesSettings : AppCompatActivity() {
                 }
             }
         })
+        /**
+         * Listeneri
+         */
         pokracovatButton.setOnClickListener {
 
             notification()
@@ -168,6 +178,9 @@ class NamesSettings : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+    }
+
     override fun onStart() {
         super.onStart()
         Log.i("NameSettings", "onStart called")
@@ -185,10 +198,9 @@ class NamesSettings : AppCompatActivity() {
         Log.i("NameSettings", "onStop called")
     }
 
-
-
-
-
+    /**
+     * Funkcia slúži na zobrazenie notifikácie
+     */
     @Suppress("DEPRECATION")
     @RequiresApi(Build.VERSION_CODES.O)
     fun notification() {
@@ -209,6 +221,11 @@ class NamesSettings : AppCompatActivity() {
         manager.notify(0, builder.build())
     }
 
+    /**
+     * @param pohlavie zo switchu True/False
+     * @return zena/muz
+     * Funkcia slúži na vrátenie zeny/muza podla booleanu
+     */
     private fun pohlavieString(pohlavie: Boolean): String {
         return if(pohlavie){
             "zena"
